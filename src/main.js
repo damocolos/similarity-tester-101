@@ -1,4 +1,4 @@
-import { mongeElkan } from "@nlptools/distance";
+import { mongeElkanSymmetric } from "@nlptools/distance";
 
 const stringA = document.getElementById("stringA");
 const stringB = document.getElementById("stringB");
@@ -18,7 +18,7 @@ compareButton.addEventListener("click", () => {
   }
 
   try {
-    const similarity = mongeElkan(a, b);
+    const similarity = mongeElkanSymmetric(a, b);
 
     // Convert 0-1 similarity to 0-100 score
     const score = similarity * 100;
