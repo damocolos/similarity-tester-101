@@ -18,7 +18,7 @@ compareButton.addEventListener("click", () => {
   }
 
   try {
-    const similarity = mongeElkanSymmetric(a, b);
+    const similarity = mongeElkanSymmetric(normalizeName(a), normalizeName(b));
 
     // Convert 0-1 similarity to 0-100 score
     const score = similarity * 100;
@@ -39,3 +39,11 @@ compareButton.addEventListener("click", () => {
     statusElement.textContent = "ERROR: COMPARISON FAILED";
   }
 });
+
+function normalizeName(name) {
+  return (name ?? "")
+    .normalize("NFD").replace(/\p{Diacritic}/gu, "") // remove diacritic characters
+    .replace(/[^\p{L}\p{N}\s]/gu, "") // remove punctuation
+    .replace(/\s+/g, " ").trim() // remove extra spaces
+    .toLowerCase(); // convert to lowercase
+}
