@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>String Similarity // Monge-Elkan</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 24px;
+      background: #111;
+      color: #00ff66;
+      font-family: "Courier New", monospace;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .terminal {
+      border: 2px solid #00ff66;
+      padding: 24px;
+      box-shadow:
+        0 0 10px rgba(0, 255, 102, 0.3),
+        inset 0 0 20px rgba(0, 255, 102, 0.05);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(20px, 5vw, 32px);
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      margin-bottom: 30px;
+      text-align: center;
+      color: #888;
+      font-size: 13px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      resize: vertical;
+      padding: 14px;
+      border: 1px solid #00ff66;
+      outline: none;
+      background: #080808;
+      color: #00ff66;
+      font: inherit;
+      font-size: 15px;
+    }
+
+    textarea:focus {
+      box-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 5px;
+      border: 2px solid #00ff66;
+      background: #00ff66;
+      color: #000;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background: #000;
+      color: #00ff66;
+    }
+
+    .result {
+      margin-top: 30px;
+      padding: 24px;
+      border: 1px dashed #00ff66;
+      text-align: center;
+    }
+
+    .result-label {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .score {
+      font-size: clamp(42px, 12vw, 80px);
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .score-max {
+      font-size: 18px;
+      color: #888;
+    }
+
+    .status {
+      margin-top: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+
+      .terminal {
+        padding: 16px;
+      }
+
+      textarea {
+        min-height: 80px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <section class="terminal">
+
+      <h1>STRING SIMILARITY</h1>
+
+      <div class="subtitle">
+        // MONGE-ELKAN COMPARATOR
+      </div>
+
+      <div class="field">
+        <label for="stringA">INPUT A</label>
+
+        <textarea
+          id="stringA"
+          placeholder="Enter first string..."
+        ></textarea>
+      </div>
+
+      <div class="field">
+        <label for="stringB">INPUT B</label>
+
+        <textarea
+          id="stringB"
+          placeholder="Enter second string..."
+        ></textarea>
+      </div>
+
+      <button id="compare">
+        [ RUN COMPARISON ]
+      </button>
+
+      <div class="result">
+        <div class="result-label">
+          MATCH SCORE
+        </div>
+
+        <div>
+          <span id="score" class="score">--</span>
+          <span class="score-max">/ 100</span>
+        </div>
+
+        <div id="status" class="status">
+          WAITING...
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
